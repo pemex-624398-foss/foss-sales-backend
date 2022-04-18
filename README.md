@@ -29,7 +29,9 @@ docker exec foss-postgres createdb -U postgres -E UTF8 foss_sales_dev
 docker exec foss-postgres createdb -U postgres -E UTF8 foss_sales_qa
 docker exec foss-postgres createdb -U postgres -E UTF8 foss_sales_prod
 
-# 5. Aplicar migraciones (copiar y personalizar Foss.Sales.Backend.Api/Infrastructure/Sql/Migrations/args.Template.txt)
+# 5. Copiar y personalizar Foss.Sales.Backend.Api/Infrastructure/Sql/Migrations/args.Template.txt
+
+# 6. Aplicar migraciones
 dotnet tool restore
 dotnet tool run evolve -- migrate '@Foss.Sales.Backend.Api/Infrastructure/Sql/Migrations/args.Development.txt'
 dotnet tool run evolve -- migrate '@Foss.Sales.Backend.Api/Infrastructure/Sql/Migrations/args.Staging.txt'
