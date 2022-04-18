@@ -7,10 +7,12 @@ pipeline {
     
     stages {
         stage('Test') {
+        
             steps {
                 echo 'Testing...'
                 sh 'dotnet --version'
             }
+            
         }
         /*stage('Build') {
             steps {
