@@ -38,8 +38,8 @@ dotnet tool run evolve -- migrate '@Foss.Sales.Backend.Api/Infrastructure/Sql/Mi
 
 ## Jenkinsfile
 ```shell
-# Crear una nueva rama <ficha>-prod 
-git checkout -b 123456-prod
+# Crear una nueva rama <ficha>-prod basada en develop 
+git checkout -b 123456-prod develop
 
 # Copiar y personalizar el archivo Jenkinsfile.Template como <ficha>.Jenkinsfile
 
