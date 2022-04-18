@@ -1,0 +1,6 @@
+Logs/
+!Logs/README.md
+
+Infrastructure/Sql/Migrations/args.Development.txt
+Infrastructure/Sql/Migrations/args.Staging.txt
+Infrastructure/Sql/Migrations/args.Production.txt

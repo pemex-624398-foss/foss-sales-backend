@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foss.Sales.Backend.Api", "Foss.Sales.Backend.Api\Foss.Sales.Backend.Api.csproj", "{A6C36156-8F25-44BF-946E-EA6C6E1B745A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foss.Sales.Backend.Test.Integration", "Foss.Sales.Backend.Test.Integration\Foss.Sales.Backend.Test.Integration.csproj", "{369C1AE2-8277-423C-A30F-2C077E6BED93}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{B762D637-3A77-4051-BEF3-0041DCEB80AF}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		global.json = global.json
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6C36156-8F25-44BF-946E-EA6C6E1B745A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6C36156-8F25-44BF-946E-EA6C6E1B745A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6C36156-8F25-44BF-946E-EA6C6E1B745A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6C36156-8F25-44BF-946E-EA6C6E1B745A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{369C1AE2-8277-423C-A30F-2C077E6BED93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{369C1AE2-8277-423C-A30F-2C077E6BED93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{369C1AE2-8277-423C-A30F-2C077E6BED93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{369C1AE2-8277-423C-A30F-2C077E6BED93}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

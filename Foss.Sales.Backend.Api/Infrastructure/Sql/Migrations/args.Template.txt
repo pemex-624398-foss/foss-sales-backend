@@ -1,0 +1,2 @@
+postgresql -c "Server=127.0.0.1;Database=foss_sales_dev;User Id=postgres;Password=p0stgr3s;" -l "Foss.Sales.Backend.Api/Infrastructure/Sql/Migrations" -s public
+

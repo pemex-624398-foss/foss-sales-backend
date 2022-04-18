@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <AssemblyName>Pemex.Foss.Sales.Backend.Api</AssemblyName>
+        <RootNamespace>Pemex.Foss.Sales.Backend.Api</RootNamespace>
+        <PackageId>Pemex.Foss.Sales.Backend.Api</PackageId>
+        <PackageVersion>0.1.0</PackageVersion>
+        <Title>Pemex FOSS Sales Backend API</Title>
+        <Authors>Adrián Avilés</Authors>
+        <Company>Pemex</Company>
+        <Product>Pemex FOSS Sales Backend API</Product>
+        <AssemblyVersion>0.1.0</AssemblyVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AutoMapper" Version="11.0.1" />
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+        <PackageReference Include="CaseExtensions" Version="1.1.0" />
+        <PackageReference Include="Dapper" Version="2.0.123" />
+        <PackageReference Include="FluentValidation" Version="10.4.0" />
+        <PackageReference Include="FluentValidation.AspNetCore" Version="10.4.0" />
+        <PackageReference Include="MediatR" Version="10.0.1" />
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+        <PackageReference Include="Npgsql" Version="6.0.3" />
+        <PackageReference Include="Serilog" Version="2.10.0" />
+        <PackageReference Include="Serilog.AspNetCore" Version="5.0.0" />
+        <PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
+        <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <InternalsVisibleTo Include="Foss.Sales.Backend.Test.Integration" />
+    </ItemGroup>
+
+</Project>
