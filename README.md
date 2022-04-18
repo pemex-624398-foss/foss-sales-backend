@@ -36,4 +36,16 @@ dotnet tool run evolve -- migrate '@Foss.Sales.Backend.Api/Infrastructure/Sql/Mi
 dotnet tool run evolve -- migrate '@Foss.Sales.Backend.Api/Infrastructure/Sql/Migrations/args.Production.txt'
 ````
 
-## Deployment
+## Jenkinsfile
+```shell
+# Crear una nueva rama <ficha>-prod 
+git checkout -b 123456-prod
+
+# Copiar y personalizar el archivo Jenkins.Template como <ficha>.Jenkinsfile
+
+# Editar archivos del proyecto y publicar cambios
+git add .
+git commit -m "my commit message"
+git push origin 123456-prod
+``` 
+å
