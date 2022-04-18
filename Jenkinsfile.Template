@@ -1,20 +1,33 @@
 pipeline {
-    agent any
+    agent {
+        docker { 
+            image 'mcr.microsoft.com/dotnet/sdk:6.0'
+        }
+    }
     
     stages {
         stage('Build') {
             steps {
                 echo 'Building...'
+                
+                sh 'dotnet restore'
+                sh 'dotnet build "Foss.Sales.Backend.Api/Foss.Sales.Backend.Api.csproj"'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing...'
+                sh 'export ASPNETCORE_ENVIRONMENT=Staging && dotnet test'
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
+                sh '''export CR_PAT=GIT_PERSONAL_ACCESS_TOKEN
+                echo $CR_PAT | docker login ghcr.io -u GIT_USER --password-stdin
+                docker build -t ghcr.io/pemex-624398-foss/foss-sales-backend:FICHA-latest .
+                docker push ghcr.io/pemex-624398-foss/foss-sales-backend:FICHA-latest
+                '''
             }
         }
     }
