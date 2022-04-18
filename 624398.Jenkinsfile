@@ -1,15 +1,23 @@
 pipeline {
     agent {
-        docker { image 'mcr.microsoft.com/dotnet/sdk:6.0' }
+        docker { 
+            image 'mcr.microsoft.com/dotnet/sdk:6.0'
+        }
     }
     
     stages {
-        stage('Build') {
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+                sh 'dotnet --version'
+            }
+        }
+        /*stage('Build') {
             steps {
                 echo 'Building...'
                 
                 sh 'dotnet restore'
-                sh 'dotnet build "Foss.Sales.Backend.Api/Foss.Sales.Backend.Api.csproj" -c Release -o /app/build'
+                sh 'dotnet build "Foss.Sales.Backend.Api/Foss.Sales.Backend.Api.csproj"'
             }
         }
         stage('Test') {
@@ -22,6 +30,6 @@ pipeline {
             steps {
                 echo 'Deploying...'
             }
-        }
+        }*/
     }
 }
