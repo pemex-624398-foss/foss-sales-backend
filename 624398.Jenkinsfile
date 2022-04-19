@@ -2,8 +2,6 @@ pipeline {
     agent {
         docker { 
             image 'mcr.microsoft.com/dotnet/sdk:6.0'
-            // image 'alpine:3.15.4'
-            reuseNode true
         }
     }
     
