@@ -1,13 +1,12 @@
 pipeline {
-    agent {
-        docker { 
-            image 'mcr.microsoft.com/dotnet/sdk:6.0'
-            args '--network host'
-        }
-    }
-    
     stages {
         stage('Build') {
+            agent {
+                docker { 
+                    image 'mcr.microsoft.com/dotnet/sdk:6.0'
+                    args '--network host'
+                }
+            }
             steps {
                 echo 'Building...'
                 
@@ -18,13 +17,19 @@ pipeline {
             }
         }
         stage('Test') {
+            agent {
+                docker { 
+                    image 'mcr.microsoft.com/dotnet/sdk:6.0'
+                    args '--network host'
+                }
+            }
             steps {
                 echo 'Testing...'
                 sh 'export ASPNETCORE_ENVIRONMENT=Staging && dotnet test'
             }
         }
         stage('Deploy') {
-            agent none
+            agent any
             steps {
                 echo 'Deploying...'
                 sh 'docker build -t ghcr.io/pemex-624398-foss/foss-sales-backend:624398-latest .'
