@@ -1,8 +1,8 @@
 pipeline {
     agent {
         docker { 
-            image 'mcr.microsoft.com/dotnet/sdk:6.0'
-            reuseNode true
+            // image 'mcr.microsoft.com/dotnet/sdk:6.0'
+            image 'alpine:3.15.4'
         }
     }
     
@@ -10,8 +10,8 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing...'
-                sh 'echo "Testing from shell"'
-                sh 'dotnet --version'
+                sh 'ls -lha'
+                // sh 'dotnet --version'
             }
         }
         /*stage('Build') {
