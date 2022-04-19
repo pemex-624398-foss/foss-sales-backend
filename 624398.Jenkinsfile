@@ -11,7 +11,8 @@ pipeline {
                 echo 'Testing...'
                 sh 'pwd'
                 sh 'ls -lha'
-                sh 'cd / && dotnet --version'
+                sh 'dotnet --version'
+                sh 'dotnet restore'
             }
         }
         /* stage('Build') {
