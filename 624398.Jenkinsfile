@@ -24,6 +24,7 @@ pipeline {
             }
         }
         stage('Deploy') {
+            agent none
             steps {
                 echo 'Deploying...'
                 sh 'docker build -t ghcr.io/pemex-624398-foss/foss-sales-backend:624398-latest .'
