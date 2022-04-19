@@ -1,10 +1,12 @@
 pipeline {
-    agent {
+    /*agent {
         docker { 
             image 'mcr.microsoft.com/dotnet/sdk:6.0'
             args '-u root'
         }
-    }
+    }*/
+    
+    agent any
     
     stages {
         stage('Test') {
