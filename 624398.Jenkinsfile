@@ -8,11 +8,8 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                echo 'Testing 1...'
                 sh 'ls -lha'
-                echo 'Testing 2...'
-                echo 'Testing 3...'
-                // sh 'dotnet --version'
+                sh 'dotnet --version'
             }
         }
         /*stage('Build') {
