@@ -3,13 +3,16 @@ pipeline {
         docker { 
             image 'mcr.microsoft.com/dotnet/sdk:6.0'
             // image 'alpine:3.15.4'
+            reuseNode true
         }
     }
     
     stages {
         stage('Test') {
             steps {
-                echo 'Testing...'
+                echo 'Testing 1...'
+                echo 'Testing 2...'
+                echo 'Testing 3...'
                 sh 'ls -lha'
                 // sh 'dotnet --version'
             }
