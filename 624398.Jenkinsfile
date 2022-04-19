@@ -5,8 +5,6 @@ pipeline {
             args '--network host'
         }
     }
-    
-   
 
     stages {
         stage('Build') {
@@ -26,11 +24,17 @@ pipeline {
             }
         }
         stage('Deploy') {
-            agent none
+            agent any
             steps {
                 echo 'Deploying...'
-                sh 'docker build -t ghcr.io/pemex-624398-foss/foss-sales-backend:624398-latest .'
-                sh 'docker push ghcr.io/pemex-624398-foss/foss-sales-backend:624398-latest'
+                
+                script {
+                    docker.build 'ghcr.io/pemex-624398-foss/foss-sales-backend:624398-latest'
+                }
+                
+                // sh 'docker build -t ghcr.io/pemex-624398-foss/foss-sales-backend:624398-latest .'
+                // sh 'docker push ghcr.io/pemex-624398-foss/foss-sales-backend:624398-latest'
+                
                 
                 // sh '''export CR_PAT=YOUR_TOKEN
                 // echo $CR_PAT | docker login ghcr.io -u adrian8167e --password-stdin
