@@ -8,8 +8,9 @@ pipeline {
     stages {
         stage('Test') {
             steps {
+                sh 'pwd'
                 sh 'ls -lha'
-                sh 'dotnet --version'
+                sh 'dotnet'
             }
         }
         /*stage('Build') {
