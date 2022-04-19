@@ -11,9 +11,9 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing 1...'
+                sh 'ls -lha'
                 echo 'Testing 2...'
                 echo 'Testing 3...'
-                sh 'ls -lha'
                 // sh 'dotnet --version'
             }
         }
