@@ -1,14 +1,13 @@
 pipeline {
-    agent none
+    agent {
+        docker { 
+            image 'mcr.microsoft.com/dotnet/sdk:6.0'
+            args '-u root'
+        }
+    }
     
     stages {
         stage('Test') {
-            agent {
-                docker { 
-                    image 'mcr.microsoft.com/dotnet/sdk:6.0'
-                }
-            }
-        
             steps {
                 echo 'Testing...'
                 sh 'echo "Testing from shell"'
