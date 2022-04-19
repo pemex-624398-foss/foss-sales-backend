@@ -11,7 +11,7 @@ pipeline {
                 echo 'Testing...'
                 sh 'pwd'
                 sh 'ls -lha'
-                sh 'dotnet'
+                sh 'cd / && dotnet --version'
             }
         }
         /* stage('Build') {
