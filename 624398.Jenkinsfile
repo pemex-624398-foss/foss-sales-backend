@@ -71,9 +71,9 @@ pipeline {
                 // Login GitHub Container Registry (ghcr.io)
                 
                 // Recommended login method
-                // sh 'cat github-pat.txt | docker login ghcr.io -u $GH_USER --password-stdin'
+                sh 'cat github-pat.txt | docker login ghcr.io -u $GH_USER --password-stdin'
                 
-                sh 'docker login ghcr.io -u $GH_USER -p $GH_PAT'
+                // sh 'docker login ghcr.io -u $GH_USER -p $GH_PAT'
                 
                 // Push docker image to GitHub Container Registry (ghcr.io)
                 sh 'docker push ghcr.io/pemex-624398-foss/foss-sales-backend:624398-latest'
