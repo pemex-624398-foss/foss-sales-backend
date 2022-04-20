@@ -44,19 +44,15 @@ pipeline {
                 
                 sh 'dotnet build "Foss.Sales.Backend.Api/Foss.Sales.Backend.Api.csproj" -c Release'
                 sh 'dotnet publish "Foss.Sales.Backend.Api/Foss.Sales.Backend.Api.csproj" -c Release'
+                sh 'ls -lh Foss.Sales.Backend.Api/bin/Release/net6.0/publish/'
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
                           
-                echo 'TODO: Build docker image'
-                echo 'TODO: Push docker image'
-                
-                sh 'ls -lh Foss.Sales.Backend.Api'
-                sh 'ls -lh Foss.Sales.Backend.Api/bin/Release/net6.0/publish/'
                 sh 'docker images'
-                sh 'docker build -t ghcr.io/pemex-624398-foss/foss-sales-backend:624398-latest .'
+                sh 'docker build -t ghcr.io/pemex-624398-foss/foss-sales-backend:624398-latest Foss.Sales.Backend.Api'
                 sh 'docker images'
                 
                 // sh '''export CR_PAT=YOUR_TOKEN
