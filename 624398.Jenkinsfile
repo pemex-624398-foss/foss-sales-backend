@@ -1,4 +1,5 @@
 pipeline {
+    agent any
     stages {
         stage('Build') {
             agent {
@@ -15,7 +16,6 @@ pipeline {
             }
         }
         stage('Test') {
-            agent none
             steps {
                 echo 'Testing...'
               
