@@ -23,12 +23,21 @@ pipeline {
                 sh 'export ASPNETCORE_ENVIRONMENT=Staging && dotnet test'
             }
         }
+        stage('Publish') {
+            steps {
+                echo "Publishing..."
+                
+                sh 'dotnet build "Foss.Sales.Backend.Api/Foss.Sales.Backend.Api.csproj" -c Release'
+                sh 'dotnet publish "Foss.Sales.Backend.Api/Foss.Sales.Backend.Api.csproj" -c Release'
+                sh 'ls -lh Foss.Sales.Backend.Api/bin/Release/net6.0/publish/'
+            }
+        }
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
                 
-                echo "Build docker image"
-                echo "Push docker image"
+                echo "TODO: Build docker image"
+                echo "TODO: Push docker image"
                 
                 // sh '''export CR_PAT=YOUR_TOKEN
                 // echo $CR_PAT | docker login ghcr.io -u adrian8167e --password-stdin

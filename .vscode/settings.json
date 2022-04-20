@@ -1,0 +1,15 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "postgres@foss_sales_dev",
+            "database": "foss_sales_dev",
+            "username": "postgres",
+            "password": "p0stgr3s",
+            "group": "foss-sales-backend"
+        }
+    ]
+}
