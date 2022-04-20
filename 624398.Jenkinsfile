@@ -1,13 +1,21 @@
 pipeline {
-    agent {
-        docker { 
-            image 'mcr.microsoft.com/dotnet/sdk:6.0'
-            args '--network host'
-        }
-    }
-
     stages {
+        stage('Build') {
+            agent {
+                docker { 
+                    image 'mcr.microsoft.com/dotnet/sdk:6.0'
+                    args '--network host'
+                }
+            }
+            steps {
+                echo 'Building...'
+              
+                sh 'ls -lh'
+                echo 'docker ps -a'
+            }
+        }
         stage('Test') {
+            agent none
             steps {
                 echo 'Testing...'
               
