@@ -8,10 +8,12 @@ pipeline {
 
     stages {
         stage('Test') {
-            echo 'Testing...'
-  
-            sh 'ls -lh'
-            echo 'docker ps -a'
+            steps {
+                echo 'Testing...'
+              
+                sh 'ls -lh'
+                echo 'docker ps -a'
+            }
         }
         /*stage('Build') {
             steps {
