@@ -12,15 +12,13 @@ pipeline {
                 echo 'Building...'
               
                 sh 'ls -lh'
-                echo 'docker ps -a'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing...'
               
-                sh 'ls -lh'
-                echo 'docker ps -a'
+                sh 'docker ps -a'
             }
         }
         /*stage('Build') {
