@@ -12,10 +12,14 @@ pipeline {
             steps {
                 echo 'Building...'
                 
-                // sh 'pwd'
-                // sh 'ls -lha'
-                // sh 'dotnet restore'
-                // sh 'dotnet build "Foss.Sales.Backend.Api/Foss.Sales.Backend.Api.csproj"'
+                sh 'pwd'
+                sh 'ls -lha'
+                
+                // Restore solution dependencies
+                sh 'dotnet restore'
+                
+                // Build application in debug mode
+                sh 'dotnet build "Foss.Sales.Backend.Api/Foss.Sales.Backend.Api.csproj"'
             }
         }
         stage('Test') {
@@ -28,6 +32,8 @@ pipeline {
             }
             steps {
                 echo 'Testing...'
+                
+                // Run tests
                 // sh 'export ASPNETCORE_ENVIRONMENT=Staging && dotnet test'
             }
         }
@@ -42,20 +48,31 @@ pipeline {
             steps {
                 echo "Publishing..."
                 
-                // sh 'dotnet build "Foss.Sales.Backend.Api/Foss.Sales.Backend.Api.csproj" -c Release'
-                // sh 'dotnet publish "Foss.Sales.Backend.Api/Foss.Sales.Backend.Api.csproj" -c Release'
-                // sh 'ls -lh Foss.Sales.Backend.Api/bin/Release/net6.0/publish/'
+                // Build application
+                sh 'dotnet build "Foss.Sales.Backend.Api/Foss.Sales.Backend.Api.csproj" -c Release'
+                
+                // Publish application
+                sh 'dotnet publish "Foss.Sales.Backend.Api/Foss.Sales.Backend.Api.csproj" -c Release'
+             
+                // List published files
+                sh 'ls -lh Foss.Sales.Backend.Api/bin/Release/net6.0/publish/'
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
                 
-                sh 'echo $GH_PAT'
+                // Build docker image
+                sh 'docker build -t ghcr.io/pemex-624398-foss/foss-sales-backend:624398-latest Foss.Sales.Backend.Api'
                 
-                // sh 'docker build -t ghcr.io/pemex-624398-foss/foss-sales-backend:624398-latest Foss.Sales.Backend.Api'
-                // sh 'docker images'
-                // sh 'docker push ghcr.io/pemex-624398-foss/foss-sales-backend:624398-latest'
+                // List docker images
+                sh 'docker images'
+                
+                // Login GitHub Container Registry (ghcr.io)
+                sh 'cat github-pat.txt | docker login ghcr.io -u $GH_USER --password-stdin'
+                
+                // Push docker image to GitHub Container Registry (ghcr.io)
+                sh 'docker push ghcr.io/pemex-624398-foss/foss-sales-backend:624398-latest'
             }
         }
     }
