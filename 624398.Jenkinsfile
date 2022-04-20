@@ -18,7 +18,7 @@ pipeline {
                 // Restore solution dependencies
                 sh 'dotnet restore'
                 
-                // Build application in debug mode
+                // Build application in Debug configuration
                 sh 'dotnet build "Foss.Sales.Backend.Api/Foss.Sales.Backend.Api.csproj"'
             }
         }
@@ -48,7 +48,7 @@ pipeline {
             steps {
                 echo "Publishing..."
                 
-                // Build application
+                // Build application in Release configuration
                 sh 'dotnet build "Foss.Sales.Backend.Api/Foss.Sales.Backend.Api.csproj" -c Release'
                 
                 // Publish application
