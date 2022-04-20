@@ -10,7 +10,7 @@ pipeline {
                 }
             }
             steps {
-                echo 'Building...'
+                echo 'Building =============================='
                 
                 sh 'pwd'
                 sh 'ls -lha'
@@ -31,7 +31,7 @@ pipeline {
                 }
             }
             steps {
-                echo 'Testing...'
+                echo 'Testing =============================='
                 
                 // Run tests
                 // sh 'export ASPNETCORE_ENVIRONMENT=Staging && dotnet test'
@@ -46,7 +46,7 @@ pipeline {
                 }
             }
             steps {
-                echo "Publishing..."
+                echo "Publishing =============================="
                 
                 // Build application in Release configuration
                 sh 'dotnet build "Foss.Sales.Backend.Api/Foss.Sales.Backend.Api.csproj" -c Release'
@@ -60,7 +60,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying...'
+                echo 'Deploying =============================='
                 
                 // Build docker image
                 sh 'docker build -t ghcr.io/pemex-624398-foss/foss-sales-backend:624398-latest Foss.Sales.Backend.Api'
@@ -69,7 +69,8 @@ pipeline {
                 sh 'docker images'
                 
                 // Login GitHub Container Registry (ghcr.io)
-                sh 'eval "cat github-pat.txt | docker login ghcr.io -u $GH_USER --password-stdin"'
+                def token = sh 'cat github-pat.txt'
+                sh "docker login ghcr.io -u \$GH_USER -p $token"
                 
                 // Push docker image to GitHub Container Registry (ghcr.io)
                 sh 'docker push ghcr.io/pemex-624398-foss/foss-sales-backend:624398-latest'
