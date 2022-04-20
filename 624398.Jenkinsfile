@@ -28,7 +28,7 @@ pipeline {
             }
             steps {
                 echo 'Testing...'
-                sh 'export ASPNETCORE_ENVIRONMENT=Staging && dotnet test'
+                // sh 'export ASPNETCORE_ENVIRONMENT=Staging && dotnet test'
             }
         }
         stage('Publish') {
@@ -50,6 +50,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
+                
+                sh 'ls -lh Foss.Sales.Backend.Api/bin/Release/net6.0/publish/'
                           
                 sh 'docker images'
                 sh 'docker build -t ghcr.io/pemex-624398-foss/foss-sales-backend:624398-latest Foss.Sales.Backend.Api'
