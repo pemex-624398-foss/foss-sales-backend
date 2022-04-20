@@ -1,35 +1,12 @@
 pipeline {
-    agent {
-        docker { 
-            image 'mcr.microsoft.com/dotnet/sdk:6.0'
-            args '--network host'
-            reuseNode true
-        }
-    }
+    agent any
     stages {
         stage('Build') {
-            steps {
-                echo 'Building...'
-              
-                sh 'pwd'
-                sh 'ls -lh'
+            docker { 
+                image 'mcr.microsoft.com/dotnet/sdk:6.0'
+                args '--network host'
+                reuseNode true
             }
-        }
-        stage('Test') {
-            agent {
-                node {
-                    label 'principal'
-                }
-            }
-            steps {
-                echo 'Testing...'
-              
-                sh 'pwd'
-                sh 'ls -lh'
-                sh 'docker ps -a'
-            }
-        }      
-        /*stage('Build') {
             steps {
                 echo 'Building...'
                 
@@ -62,7 +39,9 @@ pipeline {
                     echo 'TODO: Push docker image'
                     
                     sh 'ls -lh Foss.Sales.Backend.Api/bin/Release/net6.0/publish/'
-                    echo 'docker ps -a'
+                    sh 'docker ps -a'
+                    sh 'docker build -t ghcr.io/pemex-624398-foss/foss-sales-backend:624398-latest .'
+                    sh 'docker images'
                     
                     // sh '''export CR_PAT=YOUR_TOKEN
                     // echo $CR_PAT | docker login ghcr.io -u adrian8167e --password-stdin
@@ -71,7 +50,7 @@ pipeline {
                     // '''
                 }
             }
-        }*/
+        }
     }
     post {
         always {
