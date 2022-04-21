@@ -1,13 +1,14 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:6.0
+﻿FROM mcr.microsoft.com/dotnet/sdk:6.0
 
 WORKDIR /app
 
 COPY bin/Release/net6.0/publish .
 
-EXPOSE 80
-EXPOSE 443
+EXPOSE 5000
 
-ENTRYPOINT ["dotnet", "Foss.Sales.Backend.Api.dll"]
+ENTRYPOINT ["dotnet", "Pemex.Foss.Sales.Backend.Api.dll"]
+
+
 
 
 #FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base

@@ -53,6 +53,7 @@ pipeline {
                 
                 // Publish application
                 sh 'dotnet publish "Foss.Sales.Backend.Api/Foss.Sales.Backend.Api.csproj" -c Release'
+                sh 'cp global.json "Foss.Sales.Backend.Api/bin/Release/net6.0/publish/"'
              
                 // List published files
                 sh 'ls -lh Foss.Sales.Backend.Api/bin/Release/net6.0/publish/'
@@ -72,9 +73,7 @@ pipeline {
                 
                 // Recommended login method
                 // sh 'cat github-pat.txt | docker login ghcr.io -u $GH_USER --password-stdin'
-                
-                sh 'echo $(cat github-pat.txt)'
-                
+                                
                 // Push docker image to GitHub Container Registry (ghcr.io)
                 // sh 'docker push ghcr.io/pemex-624398-foss/foss-sales-backend:624398-latest'
             }
