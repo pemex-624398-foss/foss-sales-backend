@@ -63,7 +63,7 @@ pipeline {
                 echo 'Deploying =============================='
                 
                 // Build and push docker image
-                sh '''docker login -u $GIT_HUB_USER -p $(cat docker-pat.txt)
+                sh '''cat docker-pat.txt | docker login -u $DOCKER_HUB_USER --password-stdin
                 docker build -t adrian8167e/foss-sales-backend:624398-latest Foss.Sales.Backend.Api
                 sh 'docker push adrian8167e/foss-sales-backend:624398-latest'
                 '''
