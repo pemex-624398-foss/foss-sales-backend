@@ -62,14 +62,14 @@ pipeline {
             steps {
                 echo 'Deploying =============================='
                 
-                // Build docker image
-                sh 'docker build -t adrian8167e/foss-sales-backend:624398-latest Foss.Sales.Backend.Api'
+                // Build and push docker image
+                sh '''cat docker-pat.txt | docker login -u $GIT_HUB_USER --password-stdin
+                docker build -t adrian8167e/foss-sales-backend:624398-latest Foss.Sales.Backend.Api
+                sh 'docker push adrian8167e/foss-sales-backend:624398-latest'
+                '''
                 
                 // List docker images
-                sh 'docker images'
-                
-                // Push docker image to GitHub Container Registry (ghcr.io)
-                sh 'docker push adrian8167e/foss-sales-backend:624398-latest'
+                sh 'docker images'                
             }
         }
     }
