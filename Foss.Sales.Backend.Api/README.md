@@ -56,7 +56,7 @@ docker run -d \
   --name foss-watchtower \
   --restart unless-stopped \
   -e TZ=America/Mazatlan \
-  -e WATCHTOWER_SCHEDULE="* */5 * * * *" \
+  -e WATCHTOWER_SCHEDULE="* */2 * * * *" \
   -v /var/run/docker.sock:/var/run/docker.sock \
   containrrr/watchtower foss-sales-api --debug
 ```
