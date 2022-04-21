@@ -21,8 +21,8 @@ docker pull adminer:4.8.1
 docker volume create foss-sales-backend_postgres-data
 
 # 3. Iniciar Servicios
-docker run -d --name foss-postgres -e POSTGRES_PASSWORD=p0stgr3s --network foss -p 5432:5432 -v foss-sales-backend_postgres-data:/var/lib/postgresql/data postgres:14.2
-docker run -d --name foss-adminer --network foss -p 9090:8080 adminer:4.8.1
+docker run -d --restart unless-stopped --name foss-postgres -e POSTGRES_PASSWORD=p0stgr3s --network foss -p 5432:5432 -v foss-sales-backend_postgres-data:/var/lib/postgresql/data postgres:14.2
+docker run -d --restart unless-stopped --name foss-adminer --network foss -p 9090:8080 adminer:4.8.1
 
 # 4. Crear bases de datos
 docker exec foss-postgres createdb -U postgres -E UTF8 foss_sales_dev
