@@ -62,11 +62,12 @@ pipeline {
             steps {
                 echo 'Deploying =============================='
                 
-                // Build and push docker image
-                sh '''cat docker-pat.txt | docker login -u $DOCKER_HUB_USER --password-stdin
-                docker build -t adrian8167e/foss-sales-backend:624398-latest Foss.Sales.Backend.Api
-                sh 'docker push adrian8167e/foss-sales-backend:624398-latest'
-                '''
+                // Build docker image
+                sh 'docker build -t adrian8167e/foss-sales-backend:624398-latest Foss.Sales.Backend.Api'
+                
+                // Push docker image
+                sh '''cat docker-pat.txt | docker login -u $DOCKER_HUB_USER --password-stdin               
+                docker push adrian8167e/foss-sales-backend:624398-latest'''
                 
                 // List docker images
                 sh 'docker images'                
