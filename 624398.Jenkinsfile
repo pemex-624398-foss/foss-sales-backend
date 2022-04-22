@@ -34,7 +34,7 @@ pipeline {
                 echo 'Testing =============================='
                 
                 // Run tests
-                // sh 'export ASPNETCORE_ENVIRONMENT=Staging && dotnet test'
+                sh 'export ASPNETCORE_ENVIRONMENT=Staging && dotnet test'
             }
         }
         stage('Publish') {
@@ -55,7 +55,7 @@ pipeline {
                 sh 'dotnet publish "Foss.Sales.Backend.Api/Foss.Sales.Backend.Api.csproj" -c Release'
              
                 // List published files
-                sh 'ls -lh Foss.Sales.Backend.Api/bin/Release/net6.0/publish/'
+                sh 'ls -lha Foss.Sales.Backend.Api/bin/Release/net6.0/publish/'
             }
         }
         stage('Deploy') {
@@ -67,7 +67,8 @@ pipeline {
                 
                 // Push docker image
                 sh '''cat docker-pat.txt | docker login -u $DOCKER_HUB_USER --password-stdin               
-                docker push adrian8167e/foss-sales-backend:624398-latest'''
+                docker push adrian8167e/foss-sales-backend:624398-latest
+                '''
                 
                 // List docker images
                 sh 'docker images'                

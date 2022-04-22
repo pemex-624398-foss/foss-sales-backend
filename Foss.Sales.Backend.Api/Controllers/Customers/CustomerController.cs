@@ -86,6 +86,8 @@ public class CustomerController : ControllerBase
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> Rename(int customerId, [FromBody] RenameCustomerCommand.Argument argument)
     {
+        _logger.Debug("Rename customer command argument {@Argument}", argument);
+        
         if (argument.CustomerId != 0 && argument.CustomerId != customerId)
             return BadRequest();
 
@@ -93,7 +95,6 @@ public class CustomerController : ControllerBase
 
         try
         {
-            _logger.Debug("Rename customer command argument {@Argument}", argument);
             await _mediator.Send(argument);
 
             _logger.Debug("Rename customer command executed");

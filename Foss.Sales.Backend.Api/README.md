@@ -20,13 +20,14 @@ dotnet clean "Foss.Sales.Backend.Api/Foss.Sales.Backend.Api.csproj" -c Release &
 docker build -t adrian8167e/foss-sales-backend:624398-latest Foss.Sales.Backend.Api
 
 # Push Docker Image and Run Container
+cat docker-pat.txt | docker login -u adrian8167e --password-stdin
 docker push adrian8167e/foss-sales-backend:624398-latest
   
 docker run -d --restart unless-stopped --network foss --name foss-sales-api -p 5555:5000 adrian8167e/foss-sales-backend:624398-latest
 
 # Test the Container
 curl "http://localhost:5555/api/customers?city=san" | jq
-curl "http://localhost:5555/api/customers?gender=female"
+curl "http://localhost:5555/api/customers?gender=female" | jq
 curl "http://localhost:5555/api/customers?gender=female" | jq
 curl "http://localhost:5555/api/customers?gender=female&email=.com" | jq
 curl "http://localhost:5555/api/customers?gender=male&email=.com" | jq
