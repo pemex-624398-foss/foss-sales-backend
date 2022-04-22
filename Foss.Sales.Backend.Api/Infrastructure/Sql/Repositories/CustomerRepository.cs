@@ -95,7 +95,7 @@ public class CustomerRepository : SqlRepository<Customer, int>, ICustomerReposit
             throw new EntityNotFoundException($"Customer not found for id {id}.", id!);
 
         if (affected != 1)
-            throw new MultipleEntityAffected("Multiple customers affected.");
+            throw new MultipleEntityAffectedException("Multiple customers affected.");
     }
 
     public async Task UpdateEmailAsync(int id, string email)
@@ -113,6 +113,6 @@ public class CustomerRepository : SqlRepository<Customer, int>, ICustomerReposit
             throw new EntityNotFoundException($"Customer not found for id {id}.", id!);
 
         if (affected != 1)
-            throw new MultipleEntityAffected("Multiple customers affected.");
+            throw new MultipleEntityAffectedException("Multiple customers affected.");
     }
 }

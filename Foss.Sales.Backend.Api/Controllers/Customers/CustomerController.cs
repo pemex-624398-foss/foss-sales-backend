@@ -104,7 +104,7 @@ public class CustomerController : ControllerBase
         {
             return NotFound();
         }
-        catch (MultipleEntityAffected)
+        catch (MultipleEntityAffectedException)
         {
             return Conflict();
         }
@@ -135,7 +135,7 @@ public class CustomerController : ControllerBase
         {
             return NotFound();
         }
-        catch (MultipleEntityAffected)
+        catch (MultipleEntityAffectedException)
         {
             return Conflict();
         }
@@ -162,7 +162,7 @@ public class CustomerController : ControllerBase
         {
             return NotFound();
         }
-        catch (MultipleEntityAffected)
+        catch (MultipleEntityAffectedException)
         {
             return Conflict();
         }
